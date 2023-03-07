@@ -28,14 +28,15 @@
 
 /* =========== home-top=========== */
 .home-con{
-    padding: 10px;
+   
     border: 0.5px solid rgb(207, 207, 207);
 }
 .home{
     border-top: 0.01px solid rgb(197, 197, 197);
 }
 .img-part{
-    border: 0.3px solid grey;
+    border: 1px solid rgb(206, 206, 206);
+    max-width:500px;    
     
 }
 .home-top{
@@ -78,6 +79,9 @@
     width: 100px;
     
 }
+#file{
+    display: none;
+}
 /* =========== right part  =========== */
 .right-part{
     border-radius: 15px;
@@ -90,9 +94,12 @@
     border-bottom-left-radius:50px ;
 }
 .search{
-    border-top-right-radius:50px ;
-    border-bottom-right-radius:50px ;
     outline:none;
+   
+}
+.form input:focus{
+    border: none;
+    outline: red !important;
     
 }
 
@@ -157,9 +164,16 @@
     margin: 40px auto;
     border-radius: 15px;
 }
+#Form,input{
+    padding-left: 10px;
+    height: 60px;
+    border-radius: 20px;
+}
 #Form,input:focus{
     height: 60px;
-    outline-color: rgb(56, 116, 228);
+    outline: none;
+    outline-color: rgb(0, 174, 243);
+    padding-left: 10px;
 }
 #Form2{
     width: 700px;
@@ -172,7 +186,7 @@
 
 #Form2 input:focus{
     height: 60px;
-    outline-color: rgb(56, 116, 228);
+    outline-color: rgb(0, 174, 243);
 }
 #Form3{
     width: 700px;
@@ -186,7 +200,7 @@
 
 #Form3 input:focus{
     height: 60px;
-    outline-color: rgb(56, 116, 228);
+    outline-color: rgb(0, 174, 243);
 }
 #Form4{
     width: 700px;
@@ -200,7 +214,7 @@
 
 #Form4 input:focus{
     height: 60px;
-    outline-color: rgb(56, 116, 228);
+    outline-color: rgb(0, 174, 243);
 }
 #Form5{
     width: 700px;
@@ -212,17 +226,10 @@
     overflow: hidden;
 }
 /* ======================== Register ================================ */
-.text-decoration-none:hover{
-    border-bottom:2px solid rgb(56, 116, 228) ;
+.form input{
+    height: 40px;
 }
-.s-month:focus{
-    outline-color: rgb(56, 116, 228);
-}
-.s-month{
-    border: none;
-}
-.s-month:focus .month{
-    height: 50px;
-    color: blue;
-    outline-color: rgb(56, 116, 228);
+.form input:focus{
+  outline-color: none !important;
+  height: 40px;
 }

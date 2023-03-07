@@ -1,3 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import User
 
 # Create your views here.
+def loginUser(request):
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('index')
+    return render(request,'user/login.html')
+
+
+def registerUser(request):
+    
+     if request.method == "POST":
+        name=request.POST["name"]
+        surname=request.POST["surname"]
+        email=request.POST["email"]
+        username=request.POST["username"]
+        password1=request.POST["password1"]
+        password2=request.POST["password2"]
+        
+        if password1 == password2:
+            user=User.objects.create_user(first_name=name,last_name=surname,email=email,username=username,password=password1)
+            user.save()
+            return redirect('loginUser')
+     return render(request,'user/register.html')
+ 
+ 
+def logoutUser(request):
+    logout(request)
+    return redirect('Twitter')

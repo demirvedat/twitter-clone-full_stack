@@ -7,39 +7,68 @@
     <main>
         <div class="myprofil-con mb-5">
             <div class="my-bg w-100">
-                <img class="w-100" style="height:200px;" src="css/img/wallpaper1.jpg" alt="">
+                <img class="w-100" style="height:200px;" src="{% static 'css/img/wallpaper1.jpg' %}" alt="">
             </div>
             <div class="my-pic d-flex justify-content-between align-items-center w-100">
                 <div class="picture">
-                    <img class="rounded-circle ms-3" style="width:150px ; height:150px; overflow:hidden; margin-top:-80px;" src="css/img/who2.jpg" alt="">
+                    <img class="rounded-circle ms-3" style="width:150px ; height:150px; overflow:hidden; margin-top:-80px;" src="{% static 'css/img/who.jpg' %}" alt="">
                 </div>
-                <div class="user-pbox d-flex justify-content-evenly w-25 align-items-center">
-                      <div class="btn-group dropstart">
-                        <a href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg style="width:20px;" viewBox="0 0 24 24" aria-hidden="true" class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Retweet'leri Görüntüle</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Konuları Görüntüle</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Listeleri ekle/kaldır</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Listeleri Görüntüle</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Anıları Görüntüle</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Profili Şununla Paylaş...</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">Bağlantıyı profile kopyala</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">@ahmedo'nun sesini kapat</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;">@ahmedo'yu engele</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: 700;"> Rapor @ahmedo</a></li>
-                        </ul>
-                      </div>
+                <button class="edit-profil rounded-5" type="button" data-bs-toggle="modal" data-bs-target="#editprofile">profili duzenle</button>
+                  <div class="modal" tabindex="-1" role="dialog" id="editprofile" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <h4>Profili duzenle</h4>
+                              <button type="button" class="btn rounded-5 bg-black text-light">Kaydet</button>
+                          </div>
+                          <div class="modal-body">
+                              <div class="bg-image-con">
+                                  <button style="position:absolute; top:20%; left:40%;" class="bg-black text-light bg-opacity-50 rounded-circle border-0"><svg style="width:30px; height:30px;fill:rgb(230, 230, 230) ;" viewBox="0 0 24 24" aria-hidden="true" class="rounded-circle r-jwli3a r-4qtqp9 r-yyyyoo r-18yzcnr r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-yc9v9c"><g><path d="M9.697 3H11v2h-.697l-3 2H5c-.276 0-.5.224-.5.5v11c0 .276.224.5.5.5h14c.276 0 .5-.224.5-.5V10h2v8.5c0 1.381-1.119 2.5-2.5 2.5H5c-1.381 0-2.5-1.119-2.5-2.5v-11C2.5 6.119 3.619 5 5 5h1.697l3-2zM12 10.5c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm-4 2c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4zM17 2c0 1.657-1.343 3-3 3v1c1.657 0 3 1.343 3 3h1c0-1.657 1.343-3 3-3V5c-1.657 0-3-1.343-3-3h-1z"></path></g></svg></button>
 
-                      <svg style="width:20px;" viewBox="0 0 24 24" aria-hidden="true" class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"><g><path d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5v13c0 1.381-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.119-2.5-2.5v-13zm2.5-.5c-.276 0-.5.224-.5.5v2.764l8 3.638 8-3.636V5.5c0-.276-.224-.5-.5-.5h-15zm15.5 5.463l-8 3.636-8-3.638V18.5c0 .276.224.5.5.5h15c.276 0 .5-.224.5-.5v-8.037z"></path></g></svg>
-                      <button class="rounded-5 bg-dark text-light">Takip et</button>
-                </div>
-                  
+                                  <button style="position:absolute; top:20%; left:50%;" class="bg-black text-light rounded-circle bg-opacity-50 border-0"><svg style="width:30px; height:30px;fill:rgb(230, 230, 230) ;" viewBox="0 0 24 24" aria-hidden="true" class="r-jwli3a r-4qtqp9 r-yyyyoo r-18yzcnr r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-yc9v9c"><g><path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path></g></svg></button>
+
+                                  <img class="w-100" style="height:200px;" src="{% static 'css/img/wallpaper1.jpg' %}" alt="">
+                              </div>
+                              <div class="pr-image-con">
+                                  <button style="position:absolute; top:33%; left:16%;" class="bg-black text-light bg-opacity-50 rounded-circle border-0"><svg style="width:30px; height:30px;fill:rgb(230, 230, 230) ;" viewBox="0 0 24 24" aria-hidden="true" class="rounded-circle r-jwli3a r-4qtqp9 r-yyyyoo r-18yzcnr r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-yc9v9c"><g><path d="M9.697 3H11v2h-.697l-3 2H5c-.276 0-.5.224-.5.5v11c0 .276.224.5.5.5h14c.276 0 .5-.224.5-.5V10h2v8.5c0 1.381-1.119 2.5-2.5 2.5H5c-1.381 0-2.5-1.119-2.5-2.5v-11C2.5 6.119 3.619 5 5 5h1.697l3-2zM12 10.5c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm-4 2c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4zM17 2c0 1.657-1.343 3-3 3v1c1.657 0 3 1.343 3 3h1c0-1.657 1.343-3 3-3V5c-1.657 0-3-1.343-3-3h-1z"></path></g></svg></button>
+
+                                  <img style="width:125px; height:125px; overflow:hidden; margin-top:-12%;" class="rounded-circle ms-3" src="{% static 'css/img/who.jpg' %}" alt="">
+                              </div>
+                              <div class="edit-name mb-3 rounded-2">
+                                  <label class="ms-3" for="">isim</label>
+                                  <input type="text" class="w-100 ms-2">
+                              </div>
+                              <div class="edit-bio mb-3 rounded-2">
+                                  <label class="ms-3" for="">Kişisel bilgiler</label>
+                                  <input type="text" class="w-100 ms-2">
+                              </div>
+                              <div class="edit-location mb-3 rounded-2">
+                                  <label class="ms-3" for="">Konum</label>
+                                  <input  type="text" class="w-100 ms-2">
+                              </div>
+                              <div class="edit-website mb-3 rounded-2">
+                                  <label class="ms-3" for="">İnternet sitesi</label>
+                                  <input type="text" class="w-100 ms-2">
+                              </div>
+                              
+                            <span class="text-secondary">Doğum tarihi</span> <a href="#">Düzenle</a><br>
+                            <span>10 Eylul 1995</span>
+                            <div class="pass-prof d-flex justify-content-between align-items-center mt-2 border-2">
+                              <a class="text-decoration-none text-black" href="#">Profesyonel profile geç</a>
+                              <svg style="width:20px; height:20px;" viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1q142lx r-1xvli5t r-dnmrzs r-f727ji r-bnwqim r-1plcrui r-lrvibr"><g><path d="M14.586 12L7.543 4.96l1.414-1.42L17.414 12l-8.457 8.46-1.414-1.42L14.586 12z"></path></g></svg>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             </div>
             <div class="my-bio">
-                <h4 class="fw-bold ms-3 pt-3 mb-0">Ahmet Arif</h4>
-                <span class="ms-4 text-secondary">@ahmedo</span><br><br>
+                <h4 class="fw-bold ms-3 pt-3 mb-0">Vedat Demir</h4>
+                <span class="ms-4 text-secondary">@dmrvedat</span><br><br>
                 <p class="ms-3">Hizli yasa genc ol</p>
                 <span class="ms-4 text-secondary"><svg style="width:20px; height:20px ;" viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M8 10c0-2.21 1.79-4 4-4v2c-1.1 0-2 .9-2 2H8zm12 1c0 4.27-2.69 8.01-6.44 8.83L15 22H9l1.45-2.17C6.7 19.01 4 15.27 4 11c0-4.84 3.46-9 8-9s8 4.16 8 9zm-8 7c3.19 0 6-3 6-7s-2.81-7-6-7-6 3-6 7 2.81 7 6 7z"></path></g></svg>Doğum tarihi: 10 Eylül 1995</span> 
                 
@@ -72,7 +101,7 @@
                      <!-- profil -->
                        <div class="pro-con me-1">
                            <div class="pict" style="width:50px; height:50px;">
-                               <img class="w-100 object-fit-cover rounded-circle" src="css/img/who.jpg" alt="">
+                               <img class="w-100 object-fit-cover rounded-circle" src="{% static 'css/img/who.jpg' %}" alt="">
                            </div>
                        </div>
                        <div class="content-con mt-3">
@@ -86,7 +115,7 @@
                                        <p>Depremde hayatını kaybeden taraftarımız Muhammed Emin Özkan’ın babası Doğan Özkan’ı Antalya’da kamp yaptığımız otelde ağırladık. 17 yaşında vefat eden genç taraftarımızın anısına 17 numaralı formayı giyecek olan Nicolò Zaniolo, Doğan Özkan’a imzalı formasını hediye etti.</p>
                                    </div>
                                    <div class="img-part rounded-4">
-                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="css/img/gsdeprem.jpg" alt="">
+                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="{% static 'css/img/gsdeprem.jpg' %}" alt="">
                                    </div>
                                </div>
                                <!-- buttons -->
@@ -124,7 +153,7 @@
                      <!-- profil -->
                        <div class="pro-con me-1">
                            <div class="pict" style="width:50px; height:50px;">
-                               <img class="w-100 object-fit-cover rounded-circle" src="css/img/who.jpg" alt="">
+                               <img class="w-100 object-fit-cover rounded-circle" src="{% static 'css/img/who.jpg' %}" alt="">
                            </div>
                        </div>
                        <div class="content-con mt-3">
@@ -138,7 +167,7 @@
                                        <p>Depremde hayatını kaybeden taraftarımız Muhammed Emin Özkan’ın babası Doğan Özkan’ı Antalya’da kamp yaptığımız otelde ağırladık. 17 yaşında vefat eden genç taraftarımızın anısına 17 numaralı formayı giyecek olan Nicolò Zaniolo, Doğan Özkan’a imzalı formasını hediye etti.</p>
                                    </div>
                                    <div class="img-part rounded-4">
-                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="css/img/gsdeprem.jpg" alt="">
+                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="{% static 'css/img/gsdeprem.jpg' %}" alt="">
                                    </div>
                                </div>
                                <!-- buttons -->
@@ -179,7 +208,7 @@
                      <!-- profil -->
                        <div class="pro-con me-1">
                            <div class="pict" style="width:50px; height:50px;">
-                               <img class="w-100 object-fit-cover rounded-circle" src="css/img/who.jpg" alt="">
+                               <img class="w-100 object-fit-cover rounded-circle" src="{% static 'css/img/who.jpg' %}" alt="">
                            </div>
                        </div>
                        <div class="content-con mt-3">
@@ -193,7 +222,7 @@
                                        <p>Depremde hayatını kaybeden taraftarımız Muhammed Emin Özkan’ın babası Doğan Özkan’ı Antalya’da kamp yaptığımız otelde ağırladık. 17 yaşında vefat eden genç taraftarımızın anısına 17 numaralı formayı giyecek olan Nicolò Zaniolo, Doğan Özkan’a imzalı formasını hediye etti.</p>
                                    </div>
                                    <div class="img-part rounded-4">
-                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="css/img/gsdeprem.jpg" alt="">
+                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="{% static 'css/img/gsdeprem.jpg' %}" alt="">
                                    </div>
                                </div>
                                <!-- buttons -->
@@ -262,7 +291,7 @@
         <div class="advice-follow d-flex justify-content-between mt-4">
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-              <img src="css/img/who.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+              <img src="{% static 'css/img/who.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong>Ahmet Aslan</strong>
             </a>
           </div>
@@ -280,7 +309,7 @@
         <div class="advice-follow d-flex justify-content-between mt-4">
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-              <img src="css/img/download.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+              <img src="{% static 'css/img/download.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong>Vedat demir</strong>
               
             </a>
@@ -290,7 +319,7 @@
         <div class="advice-follow d-flex justify-content-between mt-4">
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="css/img/who2.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+              <img src="{% static 'css/img/who2.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
               <strong>Cenk Tosun</strong>
             </a>
             <ul style="height:100px ;" class="dropdown-menu shadow border-1 border-light rounded-4 border-opacity-25">
@@ -464,4 +493,3 @@
 </div>
  
 {% endblock body %}
- 

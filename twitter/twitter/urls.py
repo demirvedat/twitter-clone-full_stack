@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from appMy.views import *
+from appUser.views import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('',Twitter, name='Twitter'),
+    path('homepage/',index, name='index'),
+    path('explore/',Explore,name='Explore'),
+    path('profile/',Profile, name='Profile'),
+    path('userprofile/',Userprofile, name='Userprofile'),
+    # ===== Login - Register ==
+    path('login/',loginUser,name='loginUser'),
+    path('register/',registerUser,name='registerUser'),
+    path('logout/',logoutUser,name='logoutUser'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
