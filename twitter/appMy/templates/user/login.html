@@ -14,7 +14,11 @@
 <!---=================== page 1-=================== -->
 <div class="container">
     <div id="Form1">
-        
+        {% if message %}
+        <div class="alert alert-danger text-center" role="alert">
+          {{ message }}
+        </div>
+        {% endif %}
        <form action="" method="POST" >
         {% csrf_token %}
         <div class="center d-flex flex-column align-items-center">
@@ -85,7 +89,6 @@
     </div>
     <!----- =================== page 2 =================== -->
     <div id="Form2">
-        
        <form  action="" method="POST" >
         {% csrf_token %}
         <div class="center d-flex flex-column align-items-center">

@@ -26,7 +26,7 @@ urlpatterns = [
     path('homepage/',index, name='index'),
     path('explore/',Explore,name='Explore'),
     path('profile/',Profile, name='Profile'),
-    path('userprofile/',Userprofile, name='Userprofile'),
+    path('userprofile/<str:pk>',Userprofile, name='Userprofile'),
     # ===== Login - Register ==
     path('login/',loginUser,name='loginUser'),
     path('register/',registerUser,name='registerUser'),

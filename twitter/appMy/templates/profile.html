@@ -7,11 +7,11 @@
     <main>
         <div class="myprofil-con mb-5">
             <div class="my-bg w-100">
-                <img class="w-100" style="height:200px;" src="{% static 'css/img/wallpaper1.jpg' %}" alt="">
+                <img class="w-100" style="height:200px;" src="{{ user.userinfo.bgimage.url }}" alt="">
             </div>
             <div class="my-pic d-flex justify-content-between align-items-center w-100">
                 <div class="picture">
-                    <img class="rounded-circle ms-3" style="width:150px ; height:150px; overflow:hidden; margin-top:-80px;" src="{% static 'css/img/who.jpg' %}" alt="">
+                    <img class="rounded-circle ms-3" style="width:150px ; height:150px; overflow:hidden; margin-top:-80px;" src="{{ user.userinfo.image.url }}" alt="">
                 </div>
                 <button class="edit-profil rounded-5" type="button" data-bs-toggle="modal" data-bs-target="#editprofile">profili duzenle</button>
                   <div class="modal" tabindex="-1" role="dialog" id="editprofile" aria-hidden="true">
@@ -67,9 +67,9 @@
                     </div>
             </div>
             <div class="my-bio">
-                <h4 class="fw-bold ms-3 pt-3 mb-0">Vedat Demir</h4>
-                <span class="ms-4 text-secondary">@dmrvedat</span><br><br>
-                <p class="ms-3">Hizli yasa genc ol</p>
+                <h4 class="fw-bold ms-3 pt-3 mb-0">{{ user.userinfo.name }}</h4>
+                <span class="ms-4 text-secondary">@{{ request.user.username }}</span><br><br>
+                <p class="ms-3">{{ user.userinfo.bio }}</p>
                 <span class="ms-4 text-secondary"><svg style="width:20px; height:20px ;" viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M8 10c0-2.21 1.79-4 4-4v2c-1.1 0-2 .9-2 2H8zm12 1c0 4.27-2.69 8.01-6.44 8.83L15 22H9l1.45-2.17C6.7 19.01 4 15.27 4 11c0-4.84 3.46-9 8-9s8 4.16 8 9zm-8 7c3.19 0 6-3 6-7s-2.81-7-6-7-6 3-6 7 2.81 7 6 7z"></path></g></svg>Doğum tarihi: 10 Eylül 1995</span> 
                 
                 <span class="text-secondary ms-4"><svg style="width:20px; height:20px ;" viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M7 4V3h2v1h6V3h2v1h1.5C19.89 4 21 5.12 21 6.5v12c0 1.38-1.11 2.5-2.5 2.5h-13C4.12 21 3 19.88 3 18.5v-12C3 5.12 4.12 4 5.5 4H7zm0 2H5.5c-.27 0-.5.22-.5.5v12c0 .28.23.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5H17v1h-2V6H9v1H7V6zm0 6h2v-2H7v2zm0 4h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-4h2v-2h-2v2z"></path></g></svg>Ağustos 2020 tarihinde katıldı</span>
@@ -95,56 +95,83 @@
             <!-- profil under pages -->
             <div class="tab-content">
                <div class="tab-pane fade show active" id="tweets" role="tabpanel" aria-labelledby="Ttweets">
-                    <div class="home mb-3">
+                
+                {% for tweet in shared %}
+                <div class="home">
+                  <!-- tweets -->
                     <div class="re-fo"></div>
                     <div class="tw-con d-flex">
-                     <!-- profil -->
-                       <div class="pro-con me-1">
-                           <div class="pict" style="width:50px; height:50px;">
-                               <img class="w-100 object-fit-cover rounded-circle" src="{% static 'css/img/who.jpg' %}" alt="">
-                           </div>
-                       </div>
-                       <div class="content-con mt-3">
-                           <div class="tw-owner mb-2">
-                               Vedat <span class="text-secondary">@username</span>
-                           </div>
-                           <!-- tweet img text -->
-                           <div class="content-part">
-                               <div class="content">
-                                   <div class="text-part">
-                                       <p>Depremde hayatını kaybeden taraftarımız Muhammed Emin Özkan’ın babası Doğan Özkan’ı Antalya’da kamp yaptığımız otelde ağırladık. 17 yaşında vefat eden genç taraftarımızın anısına 17 numaralı formayı giyecek olan Nicolò Zaniolo, Doğan Özkan’a imzalı formasını hediye etti.</p>
-                                   </div>
-                                   <div class="img-part rounded-4">
-                                       <img style="max-height:300px ;" class="w-100 rounded-4" src="{% static 'css/img/gsdeprem.jpg' %}" alt="">
-                                   </div>
-                               </div>
-                               <!-- buttons -->
-                               <div class="buttons d-flex justify-content-between w-75">
-                                   <div class="comment">
-                                     <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
-                                   </div>
+                    <!-- profil -->
+                      <div class="pro-con me-1">
+                          <div class="pict" style="width:50px; height:50px;">
+                              <img style="width:50px; height:50px;" class="w-100 object-fit-cover rounded-circle" src="{{ tweet.owner.userinfo.image.url }}" alt="">
+                          </div>
+                      </div>
+                      <div class="content-con mt-3 w-100">
+                          <div class="tw-owner mb-2">
+                            <a href="/userprofile/{{ tweet.owner.id }}">
+                            <span class="fs-5 text-black fw-bold">{{ tweet.owner.first_name }}</span>   <span class="text-secondary">@{{ tweet.owner.username }}</span>
+                          </a>
+                          </div>
+                          <!-- tweet img text -->
+                          <div class="content-part w-100">
+                              <div class="content">
+                                  <div class="text-part">
+                                      <p>{{ tweet.text }}</p>
+                                  </div>
+                                  
+                                  {% if tweet.image %}
+                                  <div class="img-part rounded-4">
+                                      <img style="height:300px;" class="w-100 rounded-4" src="{{ tweet.image.url }}" alt="">
+                                  </div>
+                                  
+                                  {% endif %}
+                                    
 
-                                   <div class="retweet">
-                                     <svg width="20" height="20" style="fill:rgb(42, 168, 10);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
-                                   </div>
+                              </div>
+                              <!-- buttons -->
+                              <div class="buttons d-flex justify-content-between w-75 mb-3">
+                                  <div class="comment">
+                                    <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
+                                  </div>
+      
+                                  <div class="retweet">
+                                    <svg width="20" height="20" style="fill:rgba(0, 0, 0, 0.959);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
+                                  </div>
+                                  
+                                 <div class="like">
+                                  <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="tweetid" value="{{tweet.id}}">
+                                    
+                                    {% if tweet.like.all.count != 0 %}
+                                      <span>{{ tweet.like.all.count }}</span>
+                                    {% endif %}
+                                      
+                                    <button class="bg-transparent border-0" type="submit" value="like{{ tweet.like.all.count }}" name="like">
+                                      <svg id="xxx" width="20" height="20" style="fill:rgba(0, 0, 0, 0.966);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g>
+                                      </svg>
+                                    </button>
+                                  </form>
+                                </div>
+                                  
 
-                                   <div class="like">
-                                     <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g></svg>
-                                   </div>
-
-                                   <div class="views">
-                                     <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
-                                   </div>
-
-                                   <div class="share-with">
-                                     <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                                  <div class="views">
+                                    <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
+                                  </div>
+      
+                                  <div class="share-with">
+                                    <svg width="20" height="20" style="fill:rgb(0, 0, 0);" viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                     </div>
-
+      
                    </div>
+                  
+                {% endfor %}
+                  
                </div> 
                <div class="tab-pane fade" id="tw-answer" role="tabpanel" aria-labelledby="Ttw-answer">
                 <div class="home mb-3">
@@ -288,50 +315,29 @@
     <!-- follow advice -->
     <div class="right-part">
         <h4>Bunları beğenebilirsin</h4>
+        
+        {% for random in r_user %}
+        {% if request.user not in random.userinfo.follower.all %}
         <div class="advice-follow d-flex justify-content-between mt-4">
           <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-              <img src="{% static 'css/img/who.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>Ahmet Aslan</strong>
+            <a href="{% url 'Userprofile' random.id %}" class="d-flex align-items-center link-dark text-decoration-none">
+              <img src="{{ random.userinfo.image.url }}" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong>{{ random.get_full_name }}</strong>
             </a>
           </div>
-          <button class="rounded-5 w-25 bg-dark text-light">Takip et</button>
+          <form  method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="userid" value="{{ random.id }}">
+            <button type="submit" name="rfollow" class="rounded-5 w-100 bg-dark text-light">Takip et</button>
+  
+           </form>
         </div>
-        <div class="advice-follow d-flex justify-content-between mt-4">
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>Sezen Aksu</strong>
-            </a>
-          </div>
-          <button class="rounded-5 w-25 bg-dark text-light">Takip et</button>
-        </div>
-        <div class="advice-follow d-flex justify-content-between mt-4">
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-              <img src="{% static 'css/img/download.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>Vedat demir</strong>
-              
-            </a>
-          </div>
-          <button class="rounded-5 w-25 bg-dark text-light">Takip et</button>
-        </div>
-        <div class="advice-follow d-flex justify-content-between mt-4">
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{% static 'css/img/who2.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>Cenk Tosun</strong>
-            </a>
-            <ul style="height:100px ;" class="dropdown-menu shadow border-1 border-light rounded-4 border-opacity-25">
-              <li><a  class="dropdown-item" href="#">Var olan bir hesap ekle</a></li>
-              <li><a  class="dropdown-item" href="#">@username hesabindan cikis yap</a></li>
-            </ul>
-          </div>
-          <button class="rounded-5 w-25 bg-dark text-light">Takip et</button>
-        </div>
-         <div class="more-advice p-3">
-          <a style="text-decoration:none ;" href="#">Daha fazla goster</a>
-         </div>
+         
+        {% endif %}
+          
+        {% endfor %}
+          
+       
     </div>
     <!-- agenda -->
     <div class="top-part">
