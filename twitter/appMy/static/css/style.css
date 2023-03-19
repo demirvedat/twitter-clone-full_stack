@@ -129,32 +129,48 @@
     border-bottom: 4px solid rgb(0, 174, 243);
 }
 /* =================================== Edit Profil ============= */
-.edit-name,.edit-bio,.edit-location,.edit-website{
+.edit-name,.edit-bio,.edit-location,.edit-website,.edit-surname{
     border: 1px solid rgb(201, 201, 201);
 }
 .edit-name input{
     border: none;
+    height: 30px;
 }
 .edit-name input:focus{
     outline: none;
+    height: 30px;
+}
+.edit-surname input{
+    border: none;
+    height: 30px;
+}
+.edit-surname input:focus{
+    outline: none;
+    height: 30px;
 }
 .edit-bio input{
     border: none;
+    height: 30px;
 }
 .edit-bio input:focus{
     outline: none;
+    height: 30px;
 }
 .edit-location input{
     border: none;
+    height: 30px;
 }
 .edit-location input:focus{
     outline: none;
+    height: 30px;
 }
 .edit-website input{
     border: none;
+    height: 30px;
 }
 .edit-website input:focus{
     outline: none;
+    height: 30px;
 }
 /* ======================================= Login ======================== */
 #Form1{

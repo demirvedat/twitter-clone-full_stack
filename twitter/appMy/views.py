@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from appUser.models import *
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def likes(request):
     tweetid = request.POST['tweetid']
@@ -15,7 +16,7 @@ def likes(request):
             tweet.like.add(request.user)
             tweet.save()
             
-            
+        
 def index(request):
     tweets=Tweet.objects.all().order_by('-id')
     if 'share' in request.POST:

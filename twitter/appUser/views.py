@@ -95,6 +95,8 @@ def Profile(request):
     
     return render(request,'profile.html',context)
 
+
+
 def Userprofile(request,pk):
     user = User.objects.get(id = pk)
     shared = Tweet.objects.filter(owner = user)
@@ -122,12 +124,6 @@ def Userprofile(request,pk):
             likes(request)
         return redirect('Userprofile',pk = user.id)
     
-    
-    
-    
-    
-    
-     
     
     context={
         'user':user,
