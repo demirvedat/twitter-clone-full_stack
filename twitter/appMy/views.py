@@ -54,9 +54,10 @@ def Explore(request):
     tweets=Tweet.objects.all().order_by('-id')
     r_user=User.objects.all().order_by('?')[:5]
     if request.method == 'POST':
-        userid=request.POST['userid']
-        ruser=User.objects.get(id=userid)
+        
         if 'rfollow' in request.POST:
+            userid=request.POST['userid']
+            ruser=User.objects.get(id=userid)
             if request.user.is_authenticated:
                 account=Userinfo.objects.get(user=request.user)
                 if Userinfo.objects.filter(user = request.user, follow__in = [ruser]).exists():
@@ -68,7 +69,8 @@ def Explore(request):
                         ruser.userinfo.follower.add(request.user)
                         
                         account.save()
-    
+        elif request.method == 'POST':
+            likes(request)
     
     context ={
         'r_user':r_user,
